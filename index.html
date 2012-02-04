@@ -1,0 +1,457 @@
+<!doctype html>  
+<html lang="en">
+	
+	<head>
+		<meta charset="utf-8">
+		
+		<title>Teaching your team to cook with Chef</title>
+
+		<meta name="description" content="An easy to use CSS 3D slideshow tool for quickly creating good looking HTML presentations.">
+		<meta name="author" content="Michael Schubert schubert@pivotallabs.com">
+		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="lib/zenburn.css">
+	</head>
+	
+	<body>
+		
+		<div id="reveal">
+			<div class="slides">
+				<section id="opening">
+				  <br />
+					<br />
+					<h2>Teaching your team to cook with</h2>
+					<h1 class="inverted">chef</h1>
+					<br />
+					<p>
+  					  <a href="mailto:schubert@pivotallabs.com">schubert@pivotallabs.com</a> / <a href="http://twitter.com/schubertcx">@schubertcx</a>
+					</p>
+					<script>
+						// Delicously hacky. Look away.
+						if( navigator.userAgent.match( /(iPhone|iPad|iPod|Android)/i ) )
+						document.write( '<p style="color: rgba(0,0,0,0.3); text-shadow: none;">('+'Tap to navigate'+')</p>' );
+					</script>
+				</section>
+				
+				<section id="overview">
+					<h2>Today's Menu</h2>
+					<br />
+					<h3 class="inverted">Appetizers</h3>
+          <h4><a href="#/2">Chef Primer</a></h4>
+          <h4><a href="#/3">Do's and don'ts with a side of gotchas</a></h4>
+          <br />
+          <h3 class="inverted">Entrees</h3>
+          <h4><a href="#/4">chef_cap</a></h4>
+          <h4><a href="#/5">brewstrap</a></h4>
+          </p>
+				</section>
+				
+				<section id="chef_primer">
+				  <section>
+				    <br />
+				    <br />
+				    <br />
+				    <h1>A Quick Chef Primer</h1>
+				  </section>
+				  <section>
+				    <h2>Chef?</h2>
+				    <p>
+  				    <q cite="http://www.opscode.com/chef/">
+  				      Chef is an open-source systems integration framework built specifically for automating the cloud. No matter how complex the realities of your business, Chef makes it easy to deploy servers and scale applications throughout your entire infrastructure. Because it combines the fundamental elements of configuration management and service oriented architectures with the full power of Ruby, Chef makes it easy to create an elegant, fully automated infrastructure.
+  				    </q>
+  				    <small><a href="http://www.opscode.com/chef/">http://www.opscode.com/chef/</a></small>
+  				  </p>
+				  </section>
+  				<section>
+            <h2>Translation</h2>
+            <br />
+            <br />
+            <br />
+				    <h3>
+				      Blah blah blah. Automate stuff.
+				    </h3>
+				  </section>
+				  <section>
+				    <h2>I configure my servers manually</q>
+				    </p>
+				    <img src="assets/like_a_boss.jpg" width="300" height="300">
+				    <h2 class="inverted">LIKE A BOSS</h2>
+				  </section>
+				  <section>
+				    <p>
+  					  <img src="assets/after_chef.jpg">
+  					</p>
+  				</section>
+				    
+				  <section>
+				    <h2>Automation made easier</h2>
+				    <h3>JSON <span style="color: green;">&#x2713;</span></h3>
+				    <p>Configuration and customize the recipes for a particular app, environment etc.</p>
+				    <h3>Ruby <span style="color: green;">&#x2713;</span></h3>
+				    <p>Commands, packages, shell scripts, cronjobs etc.<p>
+				  </section>
+				  <section>
+				    <h2>Chef in One Slide</h2>
+				    <pre class="fragment">
+				      <code class="javascript" contenteditable>
+    // node.json
+    {
+      "myapp" {
+        "repository": "http://example.com/myapp.git"
+      },
+      "run_list": ["mysql", "myrailsapp::deploy"]
+    }
+				      </code>
+				    </pre>
+				    <pre class="fragment">
+				      <code class="ruby" contenteditable>
+    # cookbooks/mysql/default.rb
+    package "mysql" do
+      action :install
+    end
+    
+    execute "create-my-database" do
+      not_if "mysql -e 'show databases' | grep myapp"
+      command "mysqladmin create myapp"
+    end
+    
+    # cookbooks/myrailsapp/deploy.rb
+    deploy "myrailsapp" do
+      repository node["myapp"]["repository"]
+      deploy_to "/apps/myapp"
+    end
+				      </code>
+				    </pre>
+				  </section>
+				  <section>
+				    <h2>The only link you must remember</h2>
+				    <br />
+				    <br />
+				    <p>
+				      This is the single most important page of documentation:
+				    </p>
+				    
+				    <h3>
+				      <a href="http://wiki.opscode.com/display/chef/Resources">http://wiki.opscode.com/display/chef/Resources</a>
+				    </h3>
+				  </section>
+				  <section>
+				    <h2>Which Chef... solo? server? sous?</h2>
+				    <h1>Chef Solo Only</h1>
+				    <h6><a href="http://wiki.opscode.com/display/chef/Installing+Chef+Server+Manually">Why not chef server?</a></h6>
+				  </section>
+				</section>
+
+				<section id="chef_primer">
+				  <section>
+				    <br />
+				    <br />
+				    <br />
+				    <h1>Do's and don'ts with a side of gotchas</h1>
+				  </section>
+				  <section>
+				    <h2>Do's & Dont's</h2>
+				    <h3>Use <a href="http://wiki.opscode.com/display/chef/Cookbook+Attributes">attributes</a> not constants!</h3>
+				    <h4>Good!</h4>
+				  	<pre>
+				  	  <code class="ruby" contenteditable>
+    # cookbooks/myapp/attributes/default.rb
+    default[:user][:home] = ENV["HOME"]
+    
+    # cookbooks/myapp/recipes/default.rb
+    execute "something" do
+      cwd node[:user][:home]
+      command "echo hello world"
+    end
+          	  </code>
+          	</pre>
+          </section>
+          <section>
+  			    <h2>Do's & Dont's</h2>
+  			    <h3>Use <a href="http://wiki.opscode.com/display/chef/Cookbook+Attributes">attributes</a> not constants!</h3>          
+          	<h4>Bad!</h4>
+				  	<pre>
+				  	  <code class="ruby" contenteditable>
+    # cookbooks/myapp/recipes/default.rb
+    USER_HOME = ENV["HOME"]
+    execute "something" do
+      cwd USER_HOME
+      command "echo hello world"
+    end
+          	  </code>
+          	</pre>
+          	<p>
+          	  You make it harder for the value to be overridden in the JSON configuration.
+				  </section>
+	        <section>
+  			    <h2>Do's & Dont's</h2>
+  			    <h3>Use <a href="http://wiki.opscode.com/display/chef/Definitions">definitions</a> NOT global methods</h3>          
+          	<h4>Good!</h4>
+				  	<pre>
+				  	  <code class="ruby" contenteditable>
+    # cookbooks/osx/definitions/homebrew.rb
+    define :homebrew do
+      action = params[:action] || "install"
+      package = params[:package] || params[:name]
+      execute "homebrew-#{action}-#{package}" do
+        not_if params[:not_if] if params[:not_if]
+        only_if params[:only_if] if params[:only_if]
+        cwd params[:cwd] if params[:cwd]
+        command "brew #{action} #{package}"
+        user params[:user] if params[:user]
+      end
+    end
+    
+    # cookbooks/myapp/recipes/default.rb
+    homebrew "mysql" do
+      not_if "test -e /usr/local/bin/mysql"
+    end
+          	  </code>
+          	</pre>
+				  </section>
+	        <section>
+  			    <h2>Do's & Dont's</h2>
+  			    <h3>Use <a href="http://wiki.opscode.com/display/chef/Definitions">definitions</a> NOT global methods</h3>          
+          	<h4>Bad!</h4>
+				  	<pre>
+				  	  <code class="ruby" contenteditable>
+    # cookbooks/osx/libraries/homebrew.rb
+    class Chef::Recipe
+      def homebrew(package, action="install", force=false)
+        execute "brew #{action} #{package}" do
+          command "brew #{action} #{package}"
+          not_if { force }
+        end
+      end
+    end
+
+    # cookbooks/myapp/recipes/default.rb
+    homebrew "mysql", "install", true
+          	  </code>
+          	</pre>
+				  </section>
+	        <section>
+  			    <h2>Do's & Dont's</h2>
+  			    <h3>Use definitions NOT global methods</h3>          
+          	<br />
+				  	<ul>
+				  	  <li>Doesn't look very 'chef' like does it?</li>
+				  	  <li>Your method will be horribly complicated to be full featured</li>
+				  	  <li>Watch what happens when we convert the definition to a LWRP</li>
+				  	</ul>
+				  </section>
+				  
+	        <section>
+  			    <h2>Do's & Dont's</h2>
+  			    <h3>Prefer <a href="http://wiki.opscode.com/display/chef/Lightweight+Resources+and+Providers+(LWRP)">LWRP</a> over Definitions</h3>
+				  	<pre>
+				  	  <code class="ruby" contenteditable>
+    # cookbooks/osx/resources/homebrew.rb
+    actions :install, :uninstall
+    attribute :action, :default => :install
+    
+    action :install do
+      execute "install" do
+        command "brew install #{new_resource.name}"
+      end
+    end
+
+    # cookbooks/myapp/recipes/default.rb
+    homebrew "mysql" do
+      not_if "test -e /usr/local/bin/mysql"
+    end
+          	  </code>
+          	</pre>
+          	Notice how the recipe <a href="#/3/3">implementation</a> didn't change?
+				  </section>
+				  
+				  <section>
+  			    <h2>Gotchas</h2>
+          	<br />
+				  	<ul>
+				  	  <li>Know your POSIX exit codes! (Any non-zero == error)</li>
+				  	  <li>You're likely running as root. Remember to use "user 'myuser'" often.</li>
+				  	  <li>Always use debug mode and put up with the noise</li>
+				  	  <li>When using 'notifies' may need to use ':immediately'</li>
+				  	  <li>Names of resources matter! They need to be unique... *across* all cookbooks</li>
+				  	</ul>
+				  </section>
+				  
+				  <section>
+  			    <h2>Gotchas</h2>
+          	<br />
+				  	<h2>Stacktraces will be large and messy. Learn to pay attention to what matters</h2>
+				  	<h4><a href="example_error.html">Example error</a></h4>
+				  </section>
+				</section>
+
+				<section id="chef_cap">
+
+				  <section>
+				    <br />
+				    <br />
+				    <br />
+				    <br />
+				    <h1>chef_cap</h1>
+				  </section>
+				  <section>
+				    <h2>History of chef_cap</h2>
+				    <p>
+				      Large existing production app with:
+				      <ul>
+				        <li>many, many environments to deploy to</li>
+				        <li>complex deployment, lots of moving parts</li>
+				        <li>split across dedicated servers and a cloud based deployment system that under the hood used chef</li>
+				        <li>existing deployment was a pile of YAML, capistrano tasks and partially 'chefized' for the cloud stuff</li>
+				    </p>
+				  </section>
+				  <section>
+				    <h2>The fundamental problem</h2>
+				    <img src="assets/capistrano_fail.jpg">
+				  </section>
+				  <section>
+				    <img src="assets/chef_cap.jpg">
+				  </section>
+				  
+				  <section>
+				    <h2>The solution</h2>
+				    <br />
+				    <br />
+				    <h3>chef-solo + capistrano = chef_cap</h3>
+				    <ul>
+				      <li>Well tested (and TDD'ing capistrano is not easy)</li>
+				      <li>100% compatible with existing capistrano tasks and plugins</li>
+				      <li>You can slowly convert your deployment over to it if you needed to</li>
+				      <li>and it's on <a href="https://github.com/casecommons/chef_cap">github</a> (Thanks CaseCommons)</li>
+				  </section>
+				  <section>
+				    <br />
+				    <br />
+				    <br />
+				    <h1>Demo</h1>
+				  </section>
+				</section>
+
+
+				<section id="brewstrap">
+				  <section>
+				    <br />
+				    <br />
+				    <br />
+				    <br />
+				    <h1>brewstrap</h1>
+				  </section>
+				  <section>
+				    <h2>The problem</h2>
+				    <br />
+				    <br />
+				    <h3 class="fragment">You hired a new developer and gave them a shiny new laptop</h3>
+				    <h3 class="fragment">They then spend the next 2 days setting up their development environment</h3>
+				  </section>
+				  <section>
+				    <h2>The problem</h2>
+				    <br />
+				    <br />
+				    <h3 class="fragment">You have a team of developers around the world and now your app has a new dependency</h3>
+				    <h3 class="fragment">Emails are sent. Calls are made. Commits are reverted.</h3>
+				    <h3 class="fragment">All the developers spend various hours getting it working in their own way.</h3>
+				  </section>
+				  <section>
+				    <h2>The solution</h2>
+				    <pre>
+				      <code class="bash" contenteditable>
+    $ curl http://git.io/PvkgGw > /tmp/brewstrap.sh && bash /tmp/brewstrap.sh
+				      </code>
+				    </pre>
+				    <small><a href="https://github.com/schubert/brewstrap">on github</a></small>
+				  </section>
+	  		  <section>
+				    <h2>Why another tool like this?</h2>
+				    <h4>Homebrew</h4>
+    		    <pre>
+				      <code class="bash" contenteditable>
+    $ /usr/bin/ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"
+				      </code>
+				    </pre>
+				    <h4>RVM</h4>
+    		    <pre>
+				      <code class="bash" contenteditable>
+    $ bash -s stable < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
+				      </code>
+				    </pre>				    
+				    <h4>Brewstrap</h4>
+				    <pre>
+				      <code class="bash" contenteditable>
+    $ curl http://git.io/PvkgGw > /tmp/brewstrap.sh && bash /tmp/brewstrap.sh
+				      </code>
+				    </pre>
+				  </section>
+				  <section>
+				    <h2>brewstrap</h2>
+				    <p>
+				      To get your OSX development environment up and running quickly. To keep your development team in sync with your development environment.
+				    </p>
+				  </section>
+				  <section>
+				    <br />
+				    <br />
+				    <br />
+				    <h1>Demo</h1>
+				  </section>
+				</section>
+				<section>
+          <h1>The End</h1>
+				</section>
+			</div>
+
+			<!-- The navigational controls UI -->
+			<aside class="controls">
+				<a class="left" href="#">&#x25C4;</a>
+				<a class="right" href="#">&#x25BA;</a>
+				<a class="up" href="#">&#x25B2;</a>
+				<a class="down" href="#">&#x25BC;</a>
+			</aside>
+
+			<!-- Displays presentation progress, max value changes via JS to reflect # of slides -->
+			<div class="progress"><span></span></div>
+			
+		</div>
+		
+		<script src="js/reveal.js"></script>
+		<script src="lib/highlight.js"></script>
+		<script>
+			// Parse the query string into a key/value object
+			var query = {};
+			location.search.replace( /[A-Z0-9]+?=(\w*)/gi, function(a) {
+				query[ a.split( '=' ).shift() ] = a.split( '=' ).pop();
+			} );
+
+			Reveal.initialize({
+				// Display controls in the bottom right corner
+				controls: true,
+
+				// Display a presentation progress bar
+				progress: true,
+
+				// If true; each slide will be pushed to the browser history
+				history: true,
+
+				// Flags if mouse wheel navigation should be enabled
+				mouseWheel: true,
+
+				// Apply a 3D roll to links on hover
+				rollingLinks: false,
+
+				// UI style
+				theme: query.theme || 'default', // default/neon
+
+				// Transition style
+				transition: query.transition || 'default' // default/cube/page/concave/linear(2d)
+			});
+
+			hljs.initHighlightingOnLoad();
+		</script>
+
+	</body>
+</html>

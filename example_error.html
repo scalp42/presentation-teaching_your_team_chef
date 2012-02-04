@@ -1,0 +1,120 @@
+<html>
+<head></head>
+<body style="background-color: black; color: white;">
+<pre>
+<code>
+[Tue, 31 Jan 2012 16:44:00 -0500] DEBUG: Processing execute[brew install htop --HEAD] on MyBox.local
+[Tue, 31 Jan 2012 16:44:00 -0500] INFO: Processing execute[brew install htop --HEAD] action run (pivotal_workstation::unix_essentials line 8)
+[Tue, 31 Jan 2012 16:44:00 -0500] DEBUG: sh(brew list | grep '^htop$')
+[Tue, 31 Jan 2012 16:44:00 -0500] INFO: execute[brew install htop --HEAD] sh( brew install htop --HEAD)
+Error: No available formula for htop
+[Tue, 31 Jan 2012 16:44:00 -0500] ERROR: execute[brew install htop --HEAD] (pivotal_workstation::unix_essentials line 8) has had an error
+[Tue, 31 Jan 2012 16:44:00 -0500] ERROR: execute[brew install htop --HEAD] (/tmp/chef/cookbooks/pivotal_workstation/libraries/brew.rb:8:in `brew_install') had an error:
+execute[brew install htop --HEAD] (pivotal_workstation::unix_essentials line 8) had an error: Chef::Exceptions::ShellCommandFailed: Expected process to exit with [0], but received '1'
+---- Begin output of  brew install htop --HEAD ----
+<span style="color: red">STDOUT: Error: No available formula for htop</span>
+STDERR: 
+---- End output of  brew install htop --HEAD ----
+Ran  brew install htop --HEAD returned 1
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/shell_out.rb:206:in `invalid!'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/shell_out.rb:192:in `error!'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/mixin/shell_out.rb:36:in `shell_out!'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/provider/execute.rb:58:in `action_run'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/resource.rb:440:in `run_action'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/runner.rb:45:in `run_action'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/runner.rb:81:in `block (2 levels) in converge'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/runner.rb:81:in `each'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/runner.rb:81:in `block in converge'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/resource_collection.rb:94:in `block in execute_each_resource'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/resource_collection/stepable_iterator.rb:116:in `call'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/resource_collection/stepable_iterator.rb:116:in `call_iterator_block'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/resource_collection/stepable_iterator.rb:85:in `step'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/resource_collection/stepable_iterator.rb:104:in `iterate'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/resource_collection/stepable_iterator.rb:55:in `each_with_index'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/resource_collection.rb:92:in `execute_each_resource'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/runner.rb:76:in `converge'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/client.rb:312:in `converge'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/client.rb:160:in `run'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/application/solo.rb:192:in `block in run_application'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/application/solo.rb:183:in `loop'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/application/solo.rb:183:in `run_application'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/application.rb:67:in `run'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/bin/chef-solo:25:in `<top (required)>'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/bin/chef-solo:19:in `load'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/bin/chef-solo:19:in `<main>'
+[Tue, 31 Jan 2012 16:44:00 -0500] ERROR: Running exception handlers
+[Tue, 31 Jan 2012 16:44:00 -0500] ERROR: Exception handlers complete
+[Tue, 31 Jan 2012 16:44:00 -0500] DEBUG: Re-raising exception: Chef::Exceptions::ShellCommandFailed - execute[brew install htop --HEAD] (pivotal_workstation::unix_essentials line 8) had an error: Chef::Exceptions::ShellCommandFailed: Expected process to exit with [0], but received '1'
+---- Begin output of  brew install htop --HEAD ----
+<span style="color: red">STDOUT: Error: No available formula for htop</span>
+STDERR: 
+---- End output of  brew install htop --HEAD ----
+Ran  brew install htop --HEAD returned 1
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/shell_out.rb:206:in `invalid!'
+  /Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/shell_out.rb:192:in `error!'
+  /Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/mixin/shell_out.rb:36:in `shell_out!'
+  /Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/provider/execute.rb:58:in `action_run'
+  /Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/resource.rb:440:in `run_action'
+  /Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/runner.rb:45:in `run_action'
+  /Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/runner.rb:81:in `block (2 levels) in converge'
+  /Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/runner.rb:81:in `each'
+  /Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/runner.rb:81:in `block in converge'
+  /Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/resource_collection.rb:94:in `block in execute_each_resource'
+  /Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/resource_collection/stepable_iterator.rb:116:in `call'
+  /Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/resource_collection/stepable_iterator.rb:116:in `call_iterator_block'
+  /Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/resource_collection/stepable_iterator.rb:85:in `step'
+  /Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/resource_collection/stepable_iterator.rb:104:in `iterate'
+  /Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/resource_collection/stepable_iterator.rb:55:in `each_with_index'
+  /Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/resource_collection.rb:92:in `execute_each_resource'
+  /Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/runner.rb:76:in `converge'
+  /Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/client.rb:312:in `converge'
+  /Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/client.rb:160:in `run'
+  /Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/application/solo.rb:192:in `block in run_application'
+  /Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/application/solo.rb:183:in `loop'
+  /Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/application/solo.rb:183:in `run_application'
+  /Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/application.rb:67:in `run'
+  /Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/bin/chef-solo:25:in `<top (required)>'
+  /Users/pivotal/.rvm/gems/ruby-1.9.2-p290/bin/chef-solo:19:in `load'
+  /Users/pivotal/.rvm/gems/ruby-1.9.2-p290/bin/chef-solo:19:in `<main>'
+[Tue, 31 Jan 2012 16:44:00 -0500] FATAL: Stacktrace dumped to /var/chef/cache/chef-stacktrace.out
+[Tue, 31 Jan 2012 16:44:00 -0500] DEBUG: Chef::Exceptions::ShellCommandFailed: execute[brew install htop --HEAD] (pivotal_workstation::unix_essentials line 8) had an error: Chef::Exceptions::ShellCommandFailed: Expected process to exit with [0], but received '1'
+---- Begin output of  brew install htop --HEAD ----
+<span style="color: red">STDOUT: Error: No available formula for htop</span>
+STDERR: 
+---- End output of  brew install htop --HEAD ----
+Ran  brew install htop --HEAD returned 1
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/shell_out.rb:206:in `invalid!'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/shell_out.rb:192:in `error!'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/mixin/shell_out.rb:36:in `shell_out!'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/provider/execute.rb:58:in `action_run'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/resource.rb:440:in `run_action'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/runner.rb:45:in `run_action'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/runner.rb:81:in `block (2 levels) in converge'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/runner.rb:81:in `each'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/runner.rb:81:in `block in converge'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/resource_collection.rb:94:in `block in execute_each_resource'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/resource_collection/stepable_iterator.rb:116:in `call'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/resource_collection/stepable_iterator.rb:116:in `call_iterator_block'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/resource_collection/stepable_iterator.rb:85:in `step'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/resource_collection/stepable_iterator.rb:104:in `iterate'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/resource_collection/stepable_iterator.rb:55:in `each_with_index'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/resource_collection.rb:92:in `execute_each_resource'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/runner.rb:76:in `converge'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/client.rb:312:in `converge'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/client.rb:160:in `run'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/application/solo.rb:192:in `block in run_application'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/application/solo.rb:183:in `loop'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/application/solo.rb:183:in `run_application'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/lib/chef/application.rb:67:in `run'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/gems/chef-0.10.8/bin/chef-solo:25:in `<top (required)>'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/bin/chef-solo:19:in `load'
+/Users/pivotal/.rvm/gems/ruby-1.9.2-p290/bin/chef-solo:19:in `<main>'
+[Tue, 31 Jan 2012 16:44:00 -0500] FATAL: Chef::Exceptions::ShellCommandFailed: execute[brew install htop --HEAD] (pivotal_workstation::unix_essentials line 8) had an error: Chef::Exceptions::ShellCommandFailed: Expected process to exit with [0], but received '1'
+---- Begin output of  brew install htop --HEAD ----
+<span style="color: red">STDOUT: Error: No available formula for htop</span>
+STDERR: 
+---- End output of  brew install htop --HEAD ----
+Ran  brew install htop --HEAD returned 1
+</code></pre>
+</body>
+</html>
