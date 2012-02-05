@@ -13,7 +13,11 @@ A quick intro to chef with some long term things to do and not do with your chef
 
 # History
 
-#### 1.0.0 (master)
+#### 1.0.1 (master)
+
+Add slides about compilation vs. execution phase.
+
+#### 1.0.0
 
 Initial slide deck
 
