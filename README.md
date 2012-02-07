@@ -13,7 +13,11 @@ A quick intro to chef with some long term things to do and not do with your chef
 
 # History
 
-#### 1.0.1 (master)
+#### 1.0.2 (master)
+
+Added CSS Nyan cat to final slide ( https://github.com/michalbe/css-nyan-cat )
+
+#### 1.0.1
 
 Add slides about compilation vs. execution phase.
 
