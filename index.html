@@ -142,6 +142,23 @@
             <h1>Chef Solo Only</h1>
             <h6><a href="http://wiki.opscode.com/display/chef/Installing+Chef+Server+Manually">Why not chef server?</a></h6>
           </section>
+          
+          <section>
+            <h2>No really... why should I care?</h2>
+            <h3>Well here is how this presentation got here:</h3>
+            <small>
+            <ol>
+              <li class="fragment">I launched brewstrap from github using a <a href="https://github.com/schubert/brewstrap-presentation">'presentation' chef repo</a></li>
+              <li class="fragment">It verified that Xcode, homebrew and rvm were installed and if they weren't it would install them</li>
+              <li class="fragment">That checked out a copy of this presentation and another repository containing a sample rails 3.2 app</li>
+              <li class="fragment">Meanwhile, while I've been talking, the chef recipes have still been executing behind this browser</li>
+              <li class="fragment">VirtualBox was installed and configured</li>
+              <li class="fragment">A brand new linux server was spun up</li>
+              <li class="fragment">A deployment process then kicked off to setup the linux server... ruby, rails, postgresql, nginx...</li>
+              <li class="fragment">Which will be running <a target="_blank" href="http://localhost:8080/">here</a> soon</li>
+            </ol>
+            </small>
+          </section>
         </section>
 
         <section id="chef_primer">
@@ -411,7 +428,7 @@
             <h2>The solution</h2>
             <pre>
               <code class="bash" contenteditable>
-    $ curl http://git.io/PvkgGw > /tmp/brewstrap.sh && bash /tmp/brewstrap.sh
+    $ curl -L http://git.io/PvkgGw > /tmp/brewstrap.sh && bash /tmp/brewstrap.sh
               </code>
             </pre>
             <small><a href="https://github.com/schubert/brewstrap">on github</a></small>
@@ -433,7 +450,7 @@
             <h4>Brewstrap</h4>
             <pre>
               <code class="bash" contenteditable>
-    $ curl http://git.io/PvkgGw > /tmp/brewstrap.sh && bash /tmp/brewstrap.sh
+    $ curl -L http://git.io/PvkgGw > /tmp/brewstrap.sh && bash /tmp/brewstrap.sh
               </code>
             </pre>
           </section>

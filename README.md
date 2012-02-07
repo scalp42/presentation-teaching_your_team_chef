@@ -13,7 +13,11 @@ A quick intro to chef with some long term things to do and not do with your chef
 
 # History
 
-#### 1.0.2 (master)
+#### 1.0.3 (master)
+
+Fix curl to use curl -L and add slide about the brewstrap-presentation execution.
+
+#### 1.0.2
 
 Added CSS Nyan cat to final slide ( https://github.com/michalbe/css-nyan-cat )
 
