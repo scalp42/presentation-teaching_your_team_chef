@@ -142,23 +142,6 @@
             <h1>Chef Solo Only</h1>
             <h6><a href="http://wiki.opscode.com/display/chef/Installing+Chef+Server+Manually">Why not chef server?</a></h6>
           </section>
-          
-          <section>
-            <h2>No really... why should I care?</h2>
-            <h3>Well here is how this presentation got here:</h3>
-            <small>
-            <ol>
-              <li class="fragment">I launched brewstrap from github using a <a href="https://github.com/schubert/brewstrap-presentation">'presentation' chef repo</a></li>
-              <li class="fragment">It verified that Xcode, homebrew and rvm were installed and if they weren't it would install them</li>
-              <li class="fragment">That checked out a copy of this presentation and another repository containing a sample rails 3.2 app</li>
-              <li class="fragment">Meanwhile, while I've been talking, the chef recipes have still been executing behind this browser</li>
-              <li class="fragment">VirtualBox was installed and configured</li>
-              <li class="fragment">A brand new linux server was spun up</li>
-              <li class="fragment">A deployment process then kicked off to setup the linux server... ruby, rails, postgresql, nginx...</li>
-              <li class="fragment">Which will be running <a target="_blank" href="http://localhost:8080/">here</a> soon</li>
-            </ol>
-            </small>
-          </section>
         </section>
 
         <section id="chef_primer">
@@ -268,7 +251,9 @@
     # cookbooks/osx/resources/homebrew.rb
     actions :install, :uninstall
     attribute :action, :default => :install
+    attribute :user, :kind_of => :string
     
+    # cookbooks/osx/providers/homebrew.rb
     action :install do
       execute "install" do
         command "brew install #{new_resource.name}"
@@ -276,7 +261,7 @@
     end
 
     # cookbooks/myapp/recipes/default.rb
-    homebrew "mysql" do
+    osx_homebrew "mysql" do
       not_if "test -e /usr/local/bin/mysql"
     end
               </code>
@@ -350,6 +335,23 @@
               <li>When using 'notifies' may need to use ':immediately'</li>
               <li>Names of resources matter! They need to be unique... *across* all cookbooks</li>
             </ul>
+          </section>
+          
+          <section>
+            <h2>So again, why do I care?</h2>
+            <h3>Well here is how this presentation got here:</h3>
+            <small>
+            <ol>
+              <li class="fragment">I launched brewstrap from github using a <a href="https://github.com/schubert/brewstrap-presentation">'presentation' chef repo</a></li>
+              <li class="fragment">It verified that Xcode, homebrew and rvm were installed and if they weren't it would install them</li>
+              <li class="fragment">That checked out a copy of this presentation and another repository containing a sample rails 3.2 app</li>
+              <li class="fragment">Meanwhile, while I've been talking, the chef recipes have still been executing behind this browser</li>
+              <li class="fragment">VirtualBox was installed and configured</li>
+              <li class="fragment">A brand new linux server was spun up</li>
+              <li class="fragment">A deployment process then kicked off to setup the linux server... ruby, rails, postgresql, nginx...</li>
+              <li class="fragment">Which will be running <a target="_blank" href="http://localhost:8080/">here</a> soon</li>
+            </ol>
+            </small>
           </section>
         </section>
 
